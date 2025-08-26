@@ -1,6 +1,8 @@
 <script setup>
+import AOS from 'aos'
 import { defineAsyncComponent } from 'vue'
-import CartIcon from '@/components/icons/CartIcon.vue'
+import CartIcon from '@/components/icons/CartIcon.vue'  
+import Loader from '@/components/icons/Loader.vue'
 import { useCartStore } from '@/stores/cart'
 import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
@@ -23,6 +25,8 @@ function goToShop() {
    await cart.removeFromCart(id)
   toast.info(`${title} removed from cart`)
   isRemoving.value = false
+
+  AOS.refresh()
 }
 
 </script>
@@ -51,14 +55,15 @@ function goToShop() {
     </div>
 
     <div v-else class="space-y-4">
-    <ClientOnly>
+  
       <CartItem
         v-for="item in cart.items"
         :key="item.id"
         :item="item"
         @remove="handleRemove(item.id, item.title)"
+
       />
-    </ClientOnly>
+   
       <div class="text-right font-semibold text-xl mt-4">
         Total: ${{ cart.totalPrice }}
       </div>

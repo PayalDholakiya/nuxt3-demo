@@ -19,4 +19,3 @@ const products = computed(() => props.products)
       :product="product"
     />
 </template>
-
