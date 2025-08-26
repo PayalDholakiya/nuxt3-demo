@@ -13,9 +13,11 @@ const products = computed(() => props.products)
 </script>
 
 <template>
-    <ProductCard
-      v-for="product in products"
-      :key="product.id"
-      :product="product"
-    />
+<div
+    v-for="product in products"
+    :key="product.id"
+    class="transition-transform duration-300 ease-in-out transform hover:scale-105"
+  >
+    <ProductCard :product="product" />
+  </div>
 </template>
