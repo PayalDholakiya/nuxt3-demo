@@ -1,17 +1,24 @@
 <template>
-  <div>
-    <h2 class="text-2xl font-semibold mb-6">Products</h2>
-    <ProductList :products="products" />
+  <div class="pt-14">
+    <div v-if="pending" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <ProductCardPlaceholder v-for="n in 8" :key="'placeholder-' + n" />
+    </div>
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-14">
+      <ProductList :products="products"  />
+    </div>
   </div>
 </template>
 
 <script setup>
+import { useToast } from 'vue-toastification'
 import ProductList from '@/components/ProductList.vue'
 import { useProducts } from '@/composables/useProducts'
 
-const { data: products, error } = await useProducts()
+const toast = useToast()
+
+const { data: products, pending, error } = useProducts()
 
 if (error.value) {
-  throw createError({ statusCode: 500, message: 'Failed to load products' })
+  toast.error(`Failed to load products: ${error.value}`)
 }
 </script>
