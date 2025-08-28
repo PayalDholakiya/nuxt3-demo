@@ -33,13 +33,14 @@ async function handleAddToCart(product) {
     <!-- Image container with fixed height and background -->
     <div class="relative w-full min-h-48 bg-gray-100 rounded overflow-hidden">
       <img
-        v-show="imageLoaded"
         :src="product.thumbnail"
         :alt="product.title"
         class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+        :class="{ 'opacity-0': !imageLoaded, 'opacity-100': imageLoaded }"
         loading="lazy"
         @load="imageLoaded = true"
-    />
+      />
+
       <!-- Skeleton Placeholder -->
       <div
         v-if="!imageLoaded"
