@@ -1,15 +1,8 @@
 <script setup>
-import AOS from 'aos'
-import { defineAsyncComponent } from 'vue'
-import CartIcon from '@/components/icons/CartIcon.vue'  
 import Loader from '@/components/icons/Loader.vue'
-import { useCartStore } from '@/stores/cart'
-import { useRouter } from 'vue-router'
+
 import { useToast } from 'vue-toastification'
 
-const CartItem = defineAsyncComponent(() =>
-import('@/components/CartItem.vue')
-)
 
 const toast = useToast()
 const cart = useCartStore()
@@ -26,7 +19,6 @@ function goToShop() {
   toast.info(`${title} removed from cart`)
   isRemoving.value = false
 
-  AOS.refresh()
 }
 
 </script>

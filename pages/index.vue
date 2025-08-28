@@ -1,7 +1,5 @@
 <script setup>
 import { useToast } from 'vue-toastification'
-import ProductList from '@/components/ProductList.vue'
-import { useProducts } from '@/composables/useProducts'
 
 const toast = useToast()
 

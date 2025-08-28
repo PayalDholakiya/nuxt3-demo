@@ -1,7 +1,4 @@
 <script setup>
-import { ref } from 'vue'
-import Loader from './icons/Loader.vue'
-import { useCartStore } from '@/stores/cart'
 import { useToast } from 'vue-toastification'
 
 const props = defineProps({
@@ -42,7 +39,7 @@ async function handleAddToCart(product) {
         class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
         loading="lazy"
         @load="imageLoaded = true"
-      />
+    />
       <!-- Skeleton Placeholder -->
       <div
         v-if="!imageLoaded"

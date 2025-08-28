@@ -1,4 +1,5 @@
-import Toast, { type PluginOptions } from 'vue-toastification'
+// plugins/toast.client.ts
+import Toast, { type PluginOptions, useToast } from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -13,5 +14,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     icon: true,
   }
 
+  // Initialize the Toast plugin
   nuxtApp.vueApp.use(Toast, options)
+
+  // Provide 'useToast' globally via Nuxt app context
+  nuxtApp.provide('toast', useToast())  // This is the key step
 })
