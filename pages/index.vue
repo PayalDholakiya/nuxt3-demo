@@ -3,7 +3,7 @@ import { useToast } from 'vue-toastification'
 
 const toast = useToast()
 
-const { data: products, pending, error } = useProducts({limit:20})
+const { data: products, pending, error } = useProducts({ limit: 20 })
 
 // 🔹 State for filters
 const searchQuery = ref('')

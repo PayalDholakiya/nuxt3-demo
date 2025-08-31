@@ -1,11 +1,9 @@
 export function useProducts(payload: any) {
   return useAsyncData('products', async () => {
-    const res: any = await $fetch('https://dummyjson.com/products', {
-      params: payload   // wrap in params
-    })
-    return res.products
+    const res: any = await $fetch('/api/products', { query: payload })
+    return res 
   }, {
-    server: false,   // client-side fetch
+    server: true,
     lazy: false,
     default: () => [],
   })
