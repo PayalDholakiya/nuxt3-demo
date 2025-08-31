@@ -21,13 +21,18 @@ function toggleMenu() {
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-8 items-center">
-          <NuxtLink to="/" class="text-gray-700 hover:text-blue-600 font-medium">Back to Home </NuxtLink>
+          <NuxtLink to="/" class="text-gray-700 hover:text-blue-600 font-medium flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back
+          </NuxtLink>
           <NuxtLink to="/cart" class="relative text-gray-700 hover:text-blue-600 font-medium">
             🛒
-            <span
+            <span 
               v-if="cart.items.length > 0"
-              class="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full"
-            >
+              class="absolute -top-2 -right-3 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
               {{ cart.items.length }}
             </span>
           </NuxtLink>
@@ -39,8 +44,7 @@ function toggleMenu() {
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path v-if="!menuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16" />
-              <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M6 18L18 6M6 6l12 12" />
+              <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
@@ -50,7 +54,13 @@ function toggleMenu() {
     <!-- Mobile Dropdown Menu -->
     <div v-if="menuOpen" class="md:hidden bg-white shadow-md">
       <div class="px-2 pt-2 pb-3 space-y-1">
-        <NuxtLink to="/" class="block text-gray-700 hover:text-blue-600 font-medium">Back to Home</NuxtLink>
+        <NuxtLink to="/" class="block text-gray-700 hover:text-blue-600 font-medium flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back
+        </NuxtLink>
         <NuxtLink to="/cart" class="block text-gray-700 hover:text-blue-600 font-medium">
           🛒 Cart ({{ cart.totalItems }})
         </NuxtLink>
@@ -58,4 +68,3 @@ function toggleMenu() {
     </div>
   </nav>
 </template>
-

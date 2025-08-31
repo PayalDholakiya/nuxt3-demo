@@ -44,8 +44,17 @@ if (error.value) {
         />
 
         <!-- 🔹 Product List -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+        <div v-if="filteredProducts.length" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
           <ProductList :products="filteredProducts" />
+        </div>
+
+        <!-- 🔹 No Products Message -->
+        <div v-else class="flex flex-col items-center justify-center text-center mt-16 text-gray-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mb-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2a4 4 0 014-4h3m0 0a4 4 0 00-4-4h-1a4 4 0 00-4 4v4a4 4 0 004 4h4a4 4 0 004-4v-2a4 4 0 00-4-4h-1" />
+          </svg>
+          <h2 class="text-xl font-semibold">No Products Found</h2>
+          <p class="mt-2 text-sm">Try adjusting your search or filter criteria.</p>
         </div>
       </div>
 
@@ -57,3 +66,4 @@ if (error.value) {
     </ClientOnly>
   </div>
 </template>
+
