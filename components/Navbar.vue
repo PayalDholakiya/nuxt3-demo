@@ -21,7 +21,7 @@ function toggleMenu() {
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-8 items-center">
-          <NuxtLink to="/" class="text-gray-700 hover:text-blue-600 font-medium">Home</NuxtLink>
+          <NuxtLink to="/" class="text-gray-700 hover:text-blue-600 font-medium">Back to Home </NuxtLink>
           <NuxtLink to="/cart" class="relative text-gray-700 hover:text-blue-600 font-medium">
             🛒
             <span
@@ -50,7 +50,7 @@ function toggleMenu() {
     <!-- Mobile Dropdown Menu -->
     <div v-if="menuOpen" class="md:hidden bg-white shadow-md">
       <div class="px-2 pt-2 pb-3 space-y-1">
-        <NuxtLink to="/" class="block text-gray-700 hover:text-blue-600 font-medium">Home</NuxtLink>
+        <NuxtLink to="/" class="block text-gray-700 hover:text-blue-600 font-medium">Back to Home</NuxtLink>
         <NuxtLink to="/cart" class="block text-gray-700 hover:text-blue-600 font-medium">
           🛒 Cart ({{ cart.totalItems }})
         </NuxtLink>

@@ -1,6 +1,5 @@
 <script setup>
 import Loader from '@/components/icons/Loader.vue'
-
 import { useToast } from 'vue-toastification'
 
 
@@ -8,6 +7,8 @@ const toast = useToast()
 const cart = useCartStore()
 const router = useRouter()
 const isRemoving = ref(false)
+
+const totalPrice = computed(()=>  cart.totalPrice.toFixed(2))
 
 function goToShop() {
   router.push('/') // Replace with your actual shop route
@@ -57,7 +58,7 @@ function goToShop() {
       />
    
       <div class="text-right font-semibold text-xl mt-4">
-        Total: ${{ cart.totalPrice }}
+        Total: ${{ totalPrice }}
       </div>
     </div>
   </div>

@@ -1,10 +1,10 @@
 // nuxt.config.ts
 export default defineNuxtConfig({
   ssr: true,
+  target: 'static', 
   modules: [
     '@nuxtjs/tailwindcss', 
     '@pinia/nuxt', 
-    '@nuxt/image',
   ],
   postcss: {
     plugins: {
@@ -30,6 +30,12 @@ export default defineNuxtConfig({
   components: [
     { path: '~/components', pathPrefix: false }, // Register the specific icons folder
   ],
+    http: {
+    cache: {
+      maxAge: 60000, // Cache API responses for 1 minute
+    },
+  },
+
   build: {
     transpile: ['vue-toastification'],
     extractCSS: true,  // Extract CSS into separate files for better caching

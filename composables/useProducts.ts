@@ -1,9 +1,11 @@
-export function useProducts() {
+export function useProducts(payload: any) {
   return useAsyncData('products', async () => {
-    const res: any = await $fetch('https://dummyjson.com/products?limit=20')
+    const res: any = await $fetch('https://dummyjson.com/products', {
+      params: payload   // wrap in params
+    })
     return res.products
   }, {
-    server: false,   // 👈 force client-side fetch
+    server: false,   // client-side fetch
     lazy: false,
     default: () => [],
   })
